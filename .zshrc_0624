@@ -1,0 +1,60 @@
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
+# hyunwk zshrc setting
+#Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats '%b'
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
+PROMPT='%F{203}%T%f %f%F{212}${vcs_info_msg_0_} %F{215}%~ > '
+
+alias ibrew="arch -x86_64 /usr/local/bin/brew"
+alias ga="git add"
+alias gc="gitmoji -c"
+alias gca="git commit --amend"
+alias gp="git push"
+alias glo="git log --oneline"
+alias gck="git checkout"
+alias gb="git branch"
+alias gd="git diff"
+alias gs="git status"
+alias grs="git restore --staged"
+alias pip3="/usr/local/bin/pip3"
+alias ll="logo-ls -al"
+alias norm="Norminette"
+alias m="make"
+alias py="python3"
+alias rm="trash"
+alias vz="vi ~/.zshrc"
+alias sz="source ~/.zshrc"
+
+#Setting PATH for Mysql
+
+#ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
+#require 'bundler/setup' # Set up gems listed in the Gemfile.
+#Bundler.require(:default)
+
+#ruby for jekyll
+#eval "$(rbenv init -)"
+#export PATH={$Home}/.rbenv/bin:$PATH && \
+#eval "$(rbenv init -)"
+plugins=(
+	git
+	zsh-syntax-highlighting
+	zsh-autosuggestions
+)
+
+source /Users/elliot/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/elliot/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.10.jdk/Contents/Home/"
+export PATH=$PATH:$JAVA_HOME/bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
